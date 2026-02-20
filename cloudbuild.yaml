@@ -1,5 +1,5 @@
 substitutions:
-  _RUN_REGION: "us-east1"
+  _RUN_REGION: "northamerica-northeast1"
   _AR_REGION: "us-central1"
   _AR_REPO: "daniel-bank-repo"
   _SERVICE: "daniel-bank-backend"
