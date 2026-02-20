@@ -1,5 +1,6 @@
 substitutions:
-  _REGION: "us-central1"
+  _RUN_REGION: "us-east1"
+  _AR_REGION: "us-central1"
   _AR_REPO: "daniel-bank-repo"
   _SERVICE: "daniel-bank-backend"
 
@@ -9,7 +10,7 @@ steps:
       [
         "build",
         "-t",
-        "${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPO}/${_SERVICE}:$SHORT_SHA",
+        "${_AR_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPO}/${_SERVICE}:$SHORT_SHA",
         "."
       ]
 
@@ -17,7 +18,7 @@ steps:
     args:
       [
         "push",
-        "${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPO}/${_SERVICE}:$SHORT_SHA"
+        "${_AR_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPO}/${_SERVICE}:$SHORT_SHA"
       ]
 
   - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
@@ -28,9 +29,9 @@ steps:
         "deploy",
         "${_SERVICE}",
         "--image",
-        "${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPO}/${_SERVICE}:$SHORT_SHA",
+        "${_AR_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPO}/${_SERVICE}:$SHORT_SHA",
         "--region",
-        "${_REGION}",
+        "${_RUN_REGION}",
         "--platform",
         "managed",
         "--allow-unauthenticated"
